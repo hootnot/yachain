@@ -35,9 +35,12 @@ References to files / paths independent from environment
 --------------------------------------------------------
 
 References to files and paths can be used relative and absolute.
-In case an attribute ends on 'path' or 'file' then the path can be
+In case an attribute ends on *path* or *file* then the path can be
 prefixed automatically when operation from a virtual environment is detected.
 The works by default upper and lower case and can be overriden.
+
+Using the *prefix* makes it possible to use the same config in different
+environments.
 
 .. code-block:: python
 
