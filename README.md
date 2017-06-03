@@ -1,5 +1,39 @@
 # yachain
-YAML access on chained arttribute names.
+YAML access on chained attribute names.
+
+Suppose we have:
+
+```yaml
+network:
+   name: developers
+   gitserver:
+      ip: 192.168.178.101
+      netmask: 255.255.255.0
+      gateway: 192.168.178.1
+      packages:
+      - yum
+      - gcc
+```
+
+With *yachain* we can access this as:
+
+```python
+>>> import yachain
+
+>>> c = yachain.Config().load("netw.cfg")
+>>> print(c["network::gitserver::gateway"])
+192.168.178.1
+>>> print(c["network::gitserver::packages"])
+['yum', 'gcc']
+```
+
+References to files / paths independent from environment
+--------------------------------------------------------
+
+References to files and paths can be used relative and absolute.
+In case an attribute ends on 'path' or 'file' then the path can be
+prefixed automatically when operation from a virtual environment is detected.
+The works by default upper and lower case and can be overriden.
 
 ```python
 # yaml config:
@@ -32,7 +66,7 @@ for A in ["logfile",
     print config[k]
 ```
 
-which will give us:
+When run from a virtual environment, this will give us:
 
 ```bash
 /home/user/venv/var/log/app.log
@@ -42,4 +76,16 @@ var/app.app.txt
 db.txt
 ```
 
-So, as expected, the *logfile* and *database_path* got the PREFIX
+So, as expected, the *logfile* and *database_path* got the PREFIX.
+
+When run from a non-virtual environment, this will give us:
+
+```bash
+/var/log/app.log
+var/app.app.txt
+/var/app/db
+/var/app/db/db.txt
+db.txt
+```
+
+So, as expected, prefixed with "/".
