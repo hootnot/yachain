@@ -1,6 +1,9 @@
 yachain
 =======
 
+.. image:: https://travis-ci.org/hootnot/yachain.svg?branch=master
+    :target: https://travis-ci.org/hootnot/yachain
+
 YAML access on chained attribute names.
 
 Suppose we have:
