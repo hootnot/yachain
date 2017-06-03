@@ -25,6 +25,7 @@ app:
 c = None
 d = None
 
+
 class TestYachain(unittest.TestCase):
 
     def setUp(self):
@@ -48,13 +49,23 @@ class TestYachain(unittest.TestCase):
 
     def test_relative_non_path_or_file(self):
         self.assertTrue(d["app::textrules"] == "var/app/app.txt")
-    
+
     def test_relative_prefixed_path(self):
         self.assertTrue(d["app::database_path"] == self.PREFIX + "/var/app/db")
 
     def test_absolute_file(self):
         self.assertTrue(d["app::database_file"] == "/var/app/db/db.txt")
 
+    def test_no_data_error(self):
+        cfg = yachain.Config()
+        with self.assertRaises(yachain.NoDataError) as err:
+            cfg["app::database_file"]
+        self.assertTrue(isinstance(err.exception, yachain.NoDataError))
+
+    def test_key_error(self):
+        with self.assertRaises(KeyError) as err:
+            d["app::not_there"]
+        self.assertTrue(isinstance(err.exception, KeyError))
 
 
 if __name__ == "__main__":
