@@ -6,6 +6,7 @@ YAML access on chained attribute names.
 Suppose we have:
 
 .. code-block:: yaml
+
    network:
       name: developers
       gitserver:
@@ -20,6 +21,7 @@ Suppose we have:
 With *yachain* we can access this as:
 
 .. code-block:: python
+
    >>> import yachain
 
    >>> c = yachain.Config().load("netw.cfg")
@@ -38,6 +40,7 @@ prefixed automatically when operation from a virtual environment is detected.
 The works by default upper and lower case and can be overriden.
 
 .. code-block::
+
    # yaml config:
    yc = """
    ---
@@ -71,6 +74,7 @@ The works by default upper and lower case and can be overriden.
 When run from a virtual environment, this will give us:
 
 .. code-block:: bash
+
    /home/user/venv/var/log/app.log
    var/app.app.txt
    /home/user/venv/var/app/db
@@ -83,6 +87,7 @@ So, as expected, the *logfile* and *database_path* got the PREFIX.
 When run from a non-virtual environment, this will give us:
 
 .. code-block:: bash
+
    /var/log/app.log
    var/app.app.txt
    /var/app/db
