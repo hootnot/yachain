@@ -39,7 +39,12 @@ In case an attribute ends on 'path' or 'file' then the path can be
 prefixed automatically when operation from a virtual environment is detected.
 The works by default upper and lower case and can be overriden.
 
-.. code-block::
+.. code-block:: python
+
+   import yachain
+   import yaml
+   import sys
+   import os
 
    # yaml config:
    yc = """
@@ -51,11 +56,6 @@ The works by default upper and lower case and can be overriden.
      database_file: /var/app/db/db.txt
      database_name: db.txt
    """
-
-   import yachain
-   import yaml
-   import sys
-   import os
 
    PREFIX = "/" if not hasattr(sys, 'real_prefix') else sys.prefix
    # CONFIG_FILE = os.path.join(PREFIX, "etc/app/app.cfg")
