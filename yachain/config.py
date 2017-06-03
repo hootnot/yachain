@@ -115,6 +115,8 @@ class Config(object):
         with open(filename) as CFG:
             self.data = yaml.load(CFG.read())
 
+        return self
+
     def __getitem__(self, k):
         """return a configuration item by key."""
 
