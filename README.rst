@@ -6,6 +6,14 @@ yachain
 
 YAML access on chained attribute names.
 
+Install
+-------
+
+.. code-block:: shell
+
+   $ pip install yachain
+
+
 Suppose we have:
 
 .. code-block:: yaml
