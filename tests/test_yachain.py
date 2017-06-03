@@ -1,5 +1,6 @@
 import sys
 import unittest
+import yaml
 import yachain
 
 
@@ -24,6 +25,7 @@ app:
 
 c = None
 d = None
+e = None
 
 
 class TestYachain(unittest.TestCase):
@@ -34,9 +36,11 @@ class TestYachain(unittest.TestCase):
             F.write(yc)
         global c
         global d
+        global e
         self.PREFIX = "/yep"
         c = yachain.Config().load("/tmp/netw.cfg")
         d = yachain.Config(prefix=self.PREFIX).load("/tmp/netw.cfg")
+        e = yachain.Config(prefix=self.PREFIX, configdata=yaml.load(yc))
 
     def test_scalar(self):
         self.assertTrue(c["network::gitserver::gateway"] == "192.168.178.1")
@@ -55,6 +59,9 @@ class TestYachain(unittest.TestCase):
 
     def test_absolute_file(self):
         self.assertTrue(d["app::database_file"] == "/var/app/db/db.txt")
+
+    def test_absolute_file_bydata(self):
+        self.assertTrue(e["app::database_file"] == "/var/app/db/db.txt")
 
     def test_no_data_error(self):
         cfg = yachain.Config()
