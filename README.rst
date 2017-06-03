@@ -76,7 +76,7 @@ When run from a virtual environment, this will give us:
    /home/user/venv/var/app/db
    /var/app/db/db.txt
    db.txt
-```
+
 
 So, as expected, the *logfile* and *database_path* got the PREFIX.
 
