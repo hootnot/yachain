@@ -7,6 +7,10 @@ yachain
 .. image:: https://img.shields.io/pypi/pyversions/yachain.svg
     :target: https://github.com/hootnot/yachain
 
+.. image:: https://coveralls.io/repos/github/hootnot/yachain/badge.svg?branch=master
+    :target: https://coveralls.io/github/hootnot/yachain?branch=master
+
+
 YAML access on chained attribute names.
 
 Install
