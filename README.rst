@@ -4,6 +4,9 @@ yachain
 .. image:: https://travis-ci.org/hootnot/yachain.svg?branch=master
     :target: https://travis-ci.org/hootnot/yachain
 
+.. image:: https://img.shields.io/pypi/pyversions/yachain.svg
+    :target: https://github.com/hootnot/yachain
+
 YAML access on chained attribute names.
 
 Install
