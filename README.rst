@@ -25,6 +25,8 @@ Suppose we have:
 
 .. code-block:: yaml
 
+   ---
+   # config
    network:
       name: developers
       gitserver:
