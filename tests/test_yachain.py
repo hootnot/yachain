@@ -40,7 +40,7 @@ class TestYachain(unittest.TestCase):
         self.PREFIX = "/yep"
         c = yachain.Config().load("/tmp/netw.cfg")
         d = yachain.Config(prefix=self.PREFIX).load("/tmp/netw.cfg")
-        e = yachain.Config(prefix=self.PREFIX, configdata=yaml.load(yc))
+        e = yachain.Config(prefix=self.PREFIX, configdata=yaml.load(yc, Loader=yaml.SafeLoader))
 
     def test_scalar(self):
         self.assertTrue(c["network::gitserver::gateway"] == "192.168.178.1")

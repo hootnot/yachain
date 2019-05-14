@@ -74,7 +74,7 @@ class Config(object):
     """
 
     def __init__(self, configdata=None, prefix=None, tokenseparator="::",
-                 reflags=re.IGNORECASE):
+                 reflags=re.IGNORECASE, yamlLoader=yaml.SafeLoader):
         """Instantiate a Config instance.
 
         Parameters
@@ -99,6 +99,7 @@ class Config(object):
         self.prefix = prefix
         self.reflags = reflags
         self.tokenseparator = tokenseparator
+        self._yamlLoader = yamlLoader
         if configdata:
             self.data = configdata
 
@@ -113,7 +114,7 @@ class Config(object):
         """
         self.filename = filename
         with open(filename) as CFG:
-            self.data = yaml.load(CFG.read())
+            self.data = yaml.load(CFG.read(), Loader=self._yamlLoader)
 
         return self
 
